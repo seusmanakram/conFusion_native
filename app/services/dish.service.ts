@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Dish} from '../shared/dish';
 import {Observable} from 'rxjs/Observable';
 import {Http,Response} from '@angular/http';
-import {baseURL} from '../shared/baseURL';
+import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
@@ -38,7 +38,7 @@ export class DishService {
 
         return this.http.get(baseURL + 'dishes?featured=true')
         .map(res => {return this.processHTTPMsgService.extractData(res)[0]; })
-        .catch(error => {return this.processHTTPMsgService.handleError(error)[0]; })
+        .catch(error => {return this.processHTTPMsgService.handleError(error); })
 
     }
 
