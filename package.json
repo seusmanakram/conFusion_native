@@ -6,7 +6,7 @@
   "nativescript": {
     "id": "org.nativescript.conFusion",
     "tns-android": {
-      "version": "3.4.0"
+      "version": "3.4.1"
     }
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@angular/router": "~5.0.0",
     "allow-publish": "^1.0.4",
     "nativescript-angular": "~5.0.0",
+    "nativescript-pro-ui": "^3.4.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.5.2",
