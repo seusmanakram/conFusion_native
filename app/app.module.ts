@@ -8,6 +8,7 @@ import {NativeScriptUISideDrawerModule} from 'nativescript-pro-ui/sidedrawer/ang
 import { HomeComponent } from "./home/home.component";
 import { MenuComponent } from "./menu/menu.component";
 import { ContactComponent } from "./contact/contact.component";
+import { AboutComponent } from "./about/about.component";
 import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import {DrawerComponent} from './shared/drawer/drawer.component'
 
@@ -38,6 +39,7 @@ import {baseURL} from "./shared/baseurl";
         AppComponent,
         HomeComponent,
         MenuComponent,
+        AboutComponent,
         ContactComponent,
         DishdetailComponent,
         DrawerComponent
