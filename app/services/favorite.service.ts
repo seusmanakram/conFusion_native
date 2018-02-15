@@ -42,7 +42,7 @@ export class FavoriteService {
         else{
             return Observable.throw('Deleting non-existant favorite');
         }
-    }
+    }   
 
 
 }
