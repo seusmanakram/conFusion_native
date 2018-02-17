@@ -8,10 +8,10 @@
             <drawer-content></drawer-content>
         </StackLayout>
     </ScrollView>
-
+    <!-- (itemSwipeProgressStarted)="onSwipeCellStarted($event)" -->
     <StackLayout tkMainContent class="page">
         <RadListView #myListView [items]="favorites" *ngIf="favorites" selectionBehaviour="none" (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
-            (itemSwipeProgressStarted)="onSwipeCellStarted($event)" (itemSwipeProgressChanged)="onCellSwiping($event)" swipeActions="true">
+             (itemSwipeProgressChanged)="onCellSwiping($event)" swipeActions="true">
             <ListViewLinearLayout tkListViewLayout scrollDirection="vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default">
             </ListViewLinearLayout>
             <ng-template tkListItemTemplate let-item="item">

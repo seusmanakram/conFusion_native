@@ -50,9 +50,10 @@ import {baseURL} from "./shared/baseurl";
         MenuComponent,
         AboutComponent,
         ContactComponent,
+        FavoritesComponent,
         DishdetailComponent,
         DrawerComponent,
-        FavoritesComponent,
+        
     ],
     providers: [
         { provide: 'BaseURL',useValue:baseURL},

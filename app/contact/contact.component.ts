@@ -11,10 +11,6 @@ import {DrawerPage} from '../shared/drawer/drawer.page'
 
 export class ContactComponent extends DrawerPage implements OnInit{
 
-   
-    
-  
-    
     constructor(
         private changeDetectorRef: ChangeDetectorRef,
         @Inject('BaseURL') private BaseURL) {
