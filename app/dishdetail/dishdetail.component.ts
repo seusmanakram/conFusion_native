@@ -4,6 +4,7 @@ import {Comment} from '../shared/comment';
 import {DishService} from '../services/dish.service';
 import {FavoriteService} from '../services/favorite.service';
 import {TNSFontIconService} from 'nativescript-ngx-fonticon';
+import * as dialogs from "ui/dialogs";
 
 import {ActivatedRoute,Params} from '@angular/router';
 import {RouterExtensions} from 'nativescript-angular/router';
@@ -69,6 +70,21 @@ export class DishdetailComponent implements OnInit{
     }
 
 
+    more(){
+        dialogs.action({
+            message: "Actions",
+            cancelButtonText: "CANCEL",
+            actions: ["Add to Favorites", "Add Comment"]
+        }).then(result => {
+            console.log("Dialog result: " + result);
+            if(result == "Add to Favorites"){
+               this.addToFavorites();
+            }else if(result == "Add Comment"){
+                // Will be handled in Task2
+            
+            }
+        });
+    }
 
 
     }
