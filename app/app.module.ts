@@ -25,7 +25,6 @@ import { DishService } from "./services/dish.service";
 import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
 import {FavoriteService} from "./services/favorite.service";
-import {CouchbaseService} from './services/couchbase.service';
 
 import { ProcessHTTPMsgService } from "./services/process-httpmsg.service";
 
@@ -73,7 +72,7 @@ import {baseURL} from "./shared/baseurl";
         LeaderService,
         PromotionService,
         FavoriteService,
-        CouchbaseService,
+       
         ProcessHTTPMsgService,
         
     ],
