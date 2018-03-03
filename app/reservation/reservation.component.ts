@@ -25,7 +25,7 @@ export class ReservationComponent extends DrawerPage implements OnInit{
     reservation: FormGroup; // used to store reactive form
     formReserve:View;
     userData:View;
-    formSubmit:boolean = false;
+    form:boolean = false;
     
     constructor(private changeDetectorReg:ChangeDetectorRef,
         private modalService:ModalDialogService,
@@ -42,8 +42,7 @@ export class ReservationComponent extends DrawerPage implements OnInit{
     }
 
     ngOnInit(){
-        this.userData = this.page.getViewById<View>("userData");
-        this.userData.visibility = "hidden";
+    
     }
 
 
@@ -88,35 +87,33 @@ export class ReservationComponent extends DrawerPage implements OnInit{
 
     onSubmit(){
         
-        this.formSubmit = true;
-        this.formReserve = this.page.getViewById<View>("formReserve");
-        this.formReserve.animate({
-         
-            translate:{x:0, y:+200 },
-            opacity:0,
-            duration:700,
-            curve:enums.AnimationCurve.easeOut
-        }); 
-
-        this.userData = this.page.getViewById<View>("userData");      
+        console.log(JSON.stringify(this.reservation.value));
         
-        this.userData.visibility ="visible";
+        this.formReserve = this.page.getViewById<View>("formReserve");
+        this.userData = this.page.getViewById<View>("userData");      
+        this.form = true;
+
         this.userData.animate({
-            translate:{x:0, y:+200 },
+            scale:{x:0, y:0},
+            opacity:0,   
+        })
+
+        this.formReserve.animate({
+            scale:{x:0, y:0},
+            opacity:0,
+            delay:500,
+            curve:enums.AnimationCurve.easeOut
+
+        });
+
+        this.userData.animate({
+            scale:{x:1, y:1},
             opacity:1,
-            duration:500,
+            delay:3000,
             curve:enums.AnimationCurve.easeIn
         });
 
-        console.log(JSON.stringify(this.reservation.value));
-        
     }
-
-    // showView(){
-    //     this.formSubmit = true;
-        
-    // }
-
 
   
 }
