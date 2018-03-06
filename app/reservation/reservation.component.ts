@@ -12,6 +12,9 @@ import * as enums from 'ui/enums';
 import {View} from 'ui/core/view';
 
 
+import {CouchbaseService} from '../services/couchbase.service';
+
+
 
 @Component({
     selector:'app-reservation',
@@ -26,11 +29,15 @@ export class ReservationComponent extends DrawerPage implements OnInit{
     formReserve:View;
     userData:View;
     form:boolean = false;
+
+    docId:string = "reservations";
+    
     
     constructor(private changeDetectorReg:ChangeDetectorRef,
         private modalService:ModalDialogService,
         private vcRef: ViewContainerRef,
         private page:Page,
+        private couchbaseService:CouchbaseService,
         private formBuilder:FormBuilder){
             super(changeDetectorReg);
             
@@ -89,6 +96,26 @@ export class ReservationComponent extends DrawerPage implements OnInit{
         
         console.log(JSON.stringify(this.reservation.value));
         
+        console.log(JSON.stringify(this.reservation.value));
+        
+        let reserve = [];
+        let doc = this.couchbaseService.getDocument(this.docId);
+        
+        if( doc == null) {
+            console.log("This is the first reservation");
+           this.couchbaseService.createDocument({"reservations": [] }, this.docId);
+         }
+         else {
+           reserve = doc.reservations;
+         }
+        
+        reserve.push( this.reservation.value);
+        console.log(reserve);
+        this.couchbaseService.updateDocument(this.docId, {"reservations": reserve});
+        console.log( JSON.stringify(this.couchbaseService.getDocument(this.docId)) );
+        
+
+
         this.formReserve = this.page.getViewById<View>("formReserve");
         this.userData = this.page.getViewById<View>("userData");      
         this.form = true;
@@ -109,7 +136,7 @@ export class ReservationComponent extends DrawerPage implements OnInit{
         this.userData.animate({
             scale:{x:1, y:1},
             opacity:1,
-            delay:3000,
+            delay:500,
             curve:enums.AnimationCurve.easeIn
         });
 
