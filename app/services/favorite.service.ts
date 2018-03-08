@@ -3,6 +3,7 @@ import {Dish} from '../shared/dish';
 import {DishService} from '../services/dish.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import * as LocalNotifications from 'nativescript-local-notifications';
 
 
 @Injectable()
@@ -23,6 +24,16 @@ export class FavoriteService {
 
         if(!this.isFavorite(id)){
             this.favorites.push(id);
+            LocalNotifications.schedule([{
+                id: id,
+                title: 'Confusion Favorites',
+                body: 'Dish ' + id + ' added successfully'
+            }])
+                .then(
+                    () => console.log('Notificiation scheduled'),
+                    (error) => console.log('Error showing notification' + error)
+                );
+               
         }
         
         return true;
