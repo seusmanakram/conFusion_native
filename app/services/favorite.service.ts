@@ -29,8 +29,7 @@ export class FavoriteService {
                 title: 'Confusion Favorites',
                 body: 'Dish ' + id + ' added successfully'
             }])
-                .then(
-                    () => console.log('Notificiation scheduled'),
+                .then(() => console.log('Notificiation scheduled'),
                     (error) => console.log('Error showing notification' + error)
                 );
                
