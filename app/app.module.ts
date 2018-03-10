@@ -9,6 +9,7 @@ import { NativeScriptUIListViewModule } from 'nativescript-pro-ui/listview/angul
 import {NativeScriptFormsModule} from 'nativescript-angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 
+
 import { HomeComponent } from "./home/home.component";
 import { MenuComponent } from "./menu/menu.component";
 import { ContactComponent } from "./contact/contact.component";
@@ -20,6 +21,7 @@ import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import {DrawerComponent} from './shared/drawer/drawer.component';
 import {CommentComponent} from './comment/comment.component';
 
+import { UserAuthComponent } from './userauth/userauth.component';
 
 import { DishService } from "./services/dish.service";
 import { PromotionService } from "./services/promotion.service";
@@ -63,7 +65,8 @@ import {baseURL} from "./shared/baseurl";
         CommentComponent,
         DrawerComponent,
         ReservationComponent,
-        ReservationModalComponent
+        ReservationModalComponent,
+        UserAuthComponent, 
         
     ],
     entryComponents: [ReservationModalComponent,CommentComponent],
