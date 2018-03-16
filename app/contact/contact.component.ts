@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject ,ChangeDetectorRef} from '@angular/core';
 import {TNSFontIconService} from 'nativescript-ngx-fonticon';
 import * as Email from 'nativescript-email';
+import * as phone from 'nativescript-phone';
 import {DrawerPage} from '../shared/drawer/drawer.page'
 
 @Component({
@@ -38,6 +39,11 @@ export class ContactComponent extends DrawerPage implements OnInit{
                     console.log('No email Configured');
                 }
             })
+    }
+
+    callRestaurant(){
+        let telnum = "+852 1234 5678";
+        phone.dial(telnum,true);
     }
 
 }
