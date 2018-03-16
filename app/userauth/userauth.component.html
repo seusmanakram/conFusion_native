@@ -30,7 +30,7 @@
                         (tap)="takePicture()"
                     ></Button>
                     <Button row="0" col="1" text="Select Image" class="btn btn-rounded-sm btn-outline"
-                    ></Button>
+                        (tap)="getFromLibrary()"></Button>
                 </GridLayout>
             </GridLayout>
             <GridLayout class="input-field input-sides" rows="auto, auto, auto, auto, auto, auto, auto" columns="*,*" [formGroup]="registerForm">

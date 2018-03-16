@@ -4,6 +4,7 @@ import {Validators, FormBuilder,FormGroup} from '@angular/forms';
 import { getString, setString} from 'application-settings';
 import {RouterExtensions} from 'nativescript-angular/router';
 import * as camera from 'nativescript-camera';
+import * as imagepick from 'nativescript-imagepicker';
 import {Image} from 'ui/image';
 
 @Component({
@@ -40,7 +41,31 @@ export class UserAuthComponent implements OnInit {
     ngOnInit(){
 
     }
-
+    
+    getFromLibrary(){
+        let photo;
+        photo = imagepick.create({
+            mode:"single"
+        });
+        
+        
+        let image = <Image>this.page.getViewById<Image>('myPicture');      
+        photo
+            .authorize()
+            .then(function() {
+                return photo.present();
+            })
+            .then(function(selection) {
+                selection.forEach(selected => {
+                    console.log(" - " + selected.uri);
+                    image.src = selected;
+                });
+            })
+            .catch(function (e) {
+                // process error
+                console.log("Error: " + e);
+            });
+    }
 
     takePicture(){
         let isAvailable = camera.isAvailable();
