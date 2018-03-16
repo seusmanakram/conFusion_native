@@ -94,6 +94,38 @@ export class ReservationComponent extends DrawerPage implements OnInit{
 
     onSubmit(){
         
+        this.datashow();
+
+
+        this.formReserve = this.page.getViewById<View>("formReserve");
+        this.userData = this.page.getViewById<View>("userData");      
+        this.form = true;
+
+        this.userData.animate({
+            scale:{x:0, y:0},
+            opacity:0,   
+        })
+
+        this.formReserve.animate({
+            scale:{x:0, y:0},
+            opacity:0,
+            delay:500,
+            curve:enums.AnimationCurve.easeOut
+
+        }).then(() =>{
+            this.userData.animate({
+                scale:{x:1, y:1},
+                opacity:1,
+                delay:500,
+                curve:enums.AnimationCurve.easeIn
+            });
+        });
+
+       
+    }
+
+  
+    datashow(){
         console.log(JSON.stringify(this.reservation.value));
         
         console.log(JSON.stringify(this.reservation.value));
@@ -114,33 +146,5 @@ export class ReservationComponent extends DrawerPage implements OnInit{
         this.couchbaseService.updateDocument(this.docId, {"reservations": reserve});
         console.log( JSON.stringify(this.couchbaseService.getDocument(this.docId)) );
         
-
-
-        this.formReserve = this.page.getViewById<View>("formReserve");
-        this.userData = this.page.getViewById<View>("userData");      
-        this.form = true;
-
-        this.userData.animate({
-            scale:{x:0, y:0},
-            opacity:0,   
-        })
-
-        this.formReserve.animate({
-            scale:{x:0, y:0},
-            opacity:0,
-            delay:500,
-            curve:enums.AnimationCurve.easeOut
-
-        });
-
-        this.userData.animate({
-            scale:{x:1, y:1},
-            opacity:1,
-            delay:500,
-            curve:enums.AnimationCurve.easeIn
-        });
-
     }
-
-  
 }
